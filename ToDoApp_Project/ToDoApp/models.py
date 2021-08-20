@@ -5,5 +5,5 @@ class Task(models.Model):
 	title = models.CharField(max_length = 20)
 	description = models.TextField()
 	priority_no = models.IntegerField()
-	status = models.BooleanField()
-	#duedate = models.DateTimeField()
+	status = models.BooleanField(default=False)
+	duedate = models.DateTimeField()
