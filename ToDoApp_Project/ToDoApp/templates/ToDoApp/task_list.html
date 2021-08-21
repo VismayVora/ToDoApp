@@ -24,6 +24,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
     <p class="card-text">{{ task.description }}</p>
    <div class="card-footer bg-transparent border-dark">
    <p class="card-title">Priority: {{task.priority_no}}</p>
+   <p class="card-title">Status: {{task.status}}</p>
    <p class="card-title">Due Date: {{task.duedate}}</p>
    <center>
        <a href="update/{{task.id}}" class="btn btn-warning" id = '{{task.id}}'>Edit</a>
