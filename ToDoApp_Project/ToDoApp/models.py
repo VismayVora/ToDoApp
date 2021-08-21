@@ -7,3 +7,5 @@ class Task(models.Model):
 	priority_no = models.IntegerField()
 	status = models.BooleanField(default=False)
 	duedate = models.DateTimeField()
+	def __str__(self):
+		return self.title

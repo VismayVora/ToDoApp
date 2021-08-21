@@ -6,7 +6,7 @@ from django.http import HttpResponse
 
 def index(request):
     task_list = Task.objects.all()
-    return render(request, 'book/library.html', {'shelf': shelf})
+    return render(request, 'ToDoApp/task_list.html', {'task_list': task_list})
 
 def create_task(request):
     upload = TaskForm()
@@ -17,8 +17,8 @@ def create_task(request):
             return redirect('index')
         else:
             return HttpResponse("""your form is wrong, reload on <a href = "{{ url : 'index'}}">reload</a>""")
-else:
-        return render(request, 'book/upload_form.html', {'upload_form':upload})
+    else:
+        return render(request, 'ToDoApp/upload_form.html', {'upload_form':upload})
 
 def update_task(request, task_id):
     task_id = int(task_id)
@@ -30,7 +30,7 @@ def update_task(request, task_id):
     if task_form.is_valid():
        task_form.save()
        return redirect('index')
-    return render(request, 'book/upload_form.html', {'upload_form':task_form})
+    return render(request, 'ToDoApp/upload_form.html', {'upload_form':task_form})
 
 def delete_task(request, task_id):
     task_id = int(task_id)
