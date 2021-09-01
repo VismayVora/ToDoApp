@@ -6,14 +6,14 @@ class AppUser(AbstractUser):
 	email = models.EmailField()
 	birth_date = models.DateField(null=True, blank=True)
 	profile_pic = models.ImageField()
+	class Meta:
+		db_table = 'auth_user'
 
 class Task_Category(models.Model):
 	title = models.CharField(max_length = 50)
 	description = models.TextField(blank = True)
 	def __str__(self):
 		return self.title
-
-
 
 class Task(models.Model):
 	category = models.ForeignKey(Task_Category,null=True,on_delete = models.SET_NULL)
