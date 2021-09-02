@@ -8,7 +8,7 @@ class AppUserAdmin(UserAdmin):
     add_form = RegistrationForm
     form = RegistrationChangeForm
     model = AppUser
-    list_display = ('username', 'first_name','last_name','password1','password2','email','birth_date','profile_pic')
+    list_display = ['username', 'first_name','last_name','email','birth_date','profile_pic']
     fieldsets = UserAdmin.fieldsets + (
             (None, {'fields': ('birth_date','profile_pic')}),
     ) #this will allow to change these fields in admin module

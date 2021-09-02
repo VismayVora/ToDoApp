@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Signup - ToDoApp
+{% endblock %}
+
+{% block content %}
+<h2>Sign up to ToDoApp</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Sign up</button>
+</form>
+{% endblock %}

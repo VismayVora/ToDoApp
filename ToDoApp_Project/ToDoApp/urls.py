@@ -1,9 +1,11 @@
 from django.urls import path
 from . import views
+from .views import SignUpView
 from ToDoApp_Project.settings import DEBUG, STATIC_URL, STATIC_ROOT, MEDIA_URL, MEDIA_ROOT
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path('signup/', SignUpView.as_view(), name='signup'),
     path('', views.categoryindex, name = 'categoryindex'),
     path('task/', views.taskindex, name = 'taskindex'),
     path('upload/', views.create_category, name = 'create-category'),

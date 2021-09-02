@@ -1,8 +1,15 @@
+from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView
 from django.shortcuts import render, redirect
-from .forms import TaskForm,Task_CategoryForm
-from .models import Task,Task_Category
+from .forms import RegistrationForm,RegistrationChangeForm,TaskForm,Task_CategoryForm
+from .models import AppUser,Task,Task_Category
 from django.http import HttpResponse
 # Create your views here.
+
+class SignUpView(CreateView):
+    form_class = RegistrationForm
+    success_url = reverse_lazy('login')
+    template_name = 'signup.html'
 
 def categoryindex(request):
     task_category_list = Task_Category.objects.all()

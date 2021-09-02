@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  <h3>Hi {{ user.username }}! </h3>
+  <p>Welcome to ToDoApp</p>
+  <p><a href="{% url 'logout' %}">logout</a></p>
+{% else %}
+  <p>Welcome to ToDoApp</p>
+  <p>Kindly login or signup</p>
+  <a href="{% url 'login' %}">Login</a> |
+  <a href="{% url 'ToDoApp:signup' %}">Sign Up</a>
+{% endif %}
+{% endblock %}

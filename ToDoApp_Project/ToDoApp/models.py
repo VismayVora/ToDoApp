@@ -3,11 +3,12 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 class AppUser(AbstractUser):
-	email = models.EmailField()
+	EMAIL_FIELD = 'email'
+	USERNAME_FIELD = 'username'
 	birth_date = models.DateField(null=True, blank=True)
 	profile_pic = models.ImageField()
-	class Meta:
-		db_table = 'auth_user'
+	#class Meta:
+		#db_table = 'auth_user'
 
 class Task_Category(models.Model):
 	title = models.CharField(max_length = 50)
