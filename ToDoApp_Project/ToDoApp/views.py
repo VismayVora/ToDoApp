@@ -1,4 +1,4 @@
-from django.urls import reverse_lazy
+fffhhfrom django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from django.shortcuts import render, redirect
 from .forms import RegistrationForm,RegistrationChangeForm,TaskForm,Task_CategoryForm
