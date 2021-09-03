@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
+
 from .models import AppUser, Task_Category, Task
 from .forms import RegistrationForm, RegistrationChangeForm
 

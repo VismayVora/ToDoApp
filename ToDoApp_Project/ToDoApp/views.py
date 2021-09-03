@@ -1,5 +1,5 @@
-fffhhfrom django.urls import reverse_lazy
-from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
 from django.shortcuts import render, redirect
 from .forms import RegistrationForm,RegistrationChangeForm,TaskForm,Task_CategoryForm
 from .models import AppUser,Task,Task_Category
