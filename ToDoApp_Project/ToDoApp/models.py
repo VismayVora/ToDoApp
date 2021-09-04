@@ -5,8 +5,8 @@ from django.contrib.auth.models import AbstractUser
 class AppUser(AbstractUser):
 	#EMAIL_FIELD = 'email'
 	#USERNAME_FIELD = 'username'
-	#birth_date = models.DateField(null=True, blank=True)
-	profile_pic = models.ImageField()
+	birth_date = models.DateField()
+	profile_pic = models.ImageField(upload_to='images/')
 	#class Meta:
 		#db_table = 'auth_user'
 

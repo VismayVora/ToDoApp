@@ -11,6 +11,7 @@ class SignUpView(CreateView):
     success_url = reverse_lazy('login')
     template_name = 'signup.html'
 
+
 def categoryindex(request):
     task_category_list = Task_Category.objects.all()
     return render(request, 'ToDoApp/task_category_list.html', {'task_category_list': task_category_list})
