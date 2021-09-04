@@ -7,7 +7,7 @@ Home
 {% if user.is_authenticated %}
   <h3>Hi {{ user.username }}! </h3>
   <p>Welcome to ToDoApp</p>
-  <p><a href="{% url 'logout' %}">logout</a></p>
+  <p><a href="{% url 'logout' %}">Logout</a></p>
 {% else %}
   <p>Welcome to ToDoApp</p>
   <p>Kindly login or signup</p>
