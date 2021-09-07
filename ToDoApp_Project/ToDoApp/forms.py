@@ -26,10 +26,11 @@ class Task_CategoryForm(forms.ModelForm):
     class Meta:
         model = Task_Category
         fields = '__all__'
+        exclude = ['user']
 
 class TaskForm(forms.ModelForm):
 
     class Meta:
         model = Task
         fields = '__all__'
-        #exclude = ['duedate']
+        #exclude = ['user']

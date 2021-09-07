@@ -3,15 +3,12 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 class AppUser(AbstractUser):
-	#EMAIL_FIELD = 'email'
-	#USERNAME_FIELD = 'username'
 	birth_date = models.DateField(null=True,blank=True)
 	profile_pic = models.ImageField(upload_to='images/')
-	#class Meta:
-		#db_table = 'auth_user'
+
 
 class Task_Category(models.Model):
-	user = models.ForeignKey(AppUser,on_delete = models.CASCADE, null=True,blank=True)
+	user = models.ForeignKey(AppUser,on_delete = models.CASCADE, null =True, blank = True)
 	title = models.CharField(max_length = 50)
 	description = models.TextField(blank = True)
 	
@@ -23,6 +20,7 @@ class Task_Category(models.Model):
 		verbose_name_plural = ("Categories")
 
 class Task(models.Model):
+	user = models.ForeignKey(AppUser, on_delete = models.CASCADE,null=True,blank=True)
 	category = models.ForeignKey(Task_Category,null=True,on_delete = models.SET_NULL)
 	title = models.CharField(max_length = 50)
 	description = models.TextField(blank = True)

@@ -13,13 +13,13 @@ class SignUpView(CreateView):
 
 
 def categoryindex(request):
-    #task_category_list = Task_Category.objects.all()
-    task_category_list = Task_Category.objects.filter(user = request.user)
+    task_category_list = Task_Category.objects.all()
+    #task_category_list = Task_Category.objects.filter(user = request.user)
     return render(request, 'ToDoApp/task_category_list.html', {'task_category_list': task_category_list})
 
 def taskindex(request):
-    task_list = Task.objects.filter()
-    #task_list = Task.objects.filter(category = request.user.category)
+    task_list = Task.objects.all()
+    #task_list = Task.objects.filter(user = request.user)
     return render(request, 'ToDoApp/task_list.html', {'task_list': task_list})
     #def get_context_data(self, **kwargs):
         #context = super().get_context_data(**kwargs)
@@ -35,7 +35,7 @@ def create_category(request):
             upload.save()
             return redirect('ToDoApp:categoryindex')
         else:
-            return HttpResponse("""your form is wrong, reload on <a href = "{{ url : 'categoryindex'}}">reload</a>""")
+            return HttpResponse("""your form is wrong, reload on <a href = "{{ url : '/ToDoApp/categoryindex'}}">reload</a>""") #Have to check whether this works or not.
     else:
         return render(request, 'ToDoApp/category_upload_form.html', {'category_upload_form':upload})
 
@@ -47,7 +47,7 @@ def create_task(request):
             upload.save()
             return redirect('ToDoApp:taskindex')
         else:
-            return HttpResponse("""your form is wrong, reload on <a href = "{{ url : 'index'}}">reload</a>""")
+            return HttpResponse("<a href='/ToDoApp/task'>Your form is wrong, click to reload.</a>")
     else:
         return render(request, 'ToDoApp/upload_form.html', {'upload_form':upload})
 
