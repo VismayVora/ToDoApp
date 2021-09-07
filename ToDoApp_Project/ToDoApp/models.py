@@ -11,12 +11,16 @@ class AppUser(AbstractUser):
 		#db_table = 'auth_user'
 
 class Task_Category(models.Model):
-	categoryuser = models.ForeignKey(AppUser,on_delete = models.CASCADE, null=True,blank=True)
+	user = models.ForeignKey(AppUser,on_delete = models.CASCADE, null=True,blank=True)
 	title = models.CharField(max_length = 50)
 	description = models.TextField(blank = True)
 	
 	def __str__(self):
 		return self.title
+
+	class Meta:
+		verbose_name = ("Category")
+		verbose_name_plural = ("Categories")
 
 class Task(models.Model):
 	category = models.ForeignKey(Task_Category,null=True,on_delete = models.SET_NULL)

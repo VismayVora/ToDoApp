@@ -4,11 +4,11 @@ from django.contrib.auth.forms import UserCreationForm,UserChangeForm
 
 
 class RegistrationForm(UserCreationForm):
-    #birth_date = forms.DateField(input_formats=['%Y-%m-%d','%m/%d/%Y','%m/%d/%y'])
+   
     class Meta(UserCreationForm):
         model = AppUser
         #fields = ('username','first_name','last_name','password1','password2','email','birth_date','profile_pic')
-        fields = ('username','first_name','last_name','email','birth_date','profile_pic')
+        fields = ['username','first_name','last_name','email','birth_date','profile_pic']
         #fields = ('username','first_name','last_name','email')
         #fields = UserCreationForm.Meta.fields + ('birth_date','profile_pic')
 
