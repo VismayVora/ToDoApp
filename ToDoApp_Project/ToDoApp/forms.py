@@ -1,7 +1,7 @@
 from django import forms
 from .models import AppUser,Task,Task_Category
 from django.contrib.auth.forms import UserCreationForm,UserChangeForm
-
+from django.http import HttpResponse
 
 class RegistrationForm(UserCreationForm):
    
@@ -26,12 +26,14 @@ class Task_CategoryForm(forms.ModelForm):
     class Meta:
         model = Task_Category
         fields = '__all__'
-        exclude = ['user']
+        Task_CategoryForm.user.queryset = Task_Category.objects.filter(user = request.user)
+        #exclude = ['user']
+
 
 class TaskForm(forms.ModelForm):
 
     class Meta:
         model = Task
         fields = '__all__'
-        exclude = ['user']
+        #exclude = ['user']
         #TaskForm.category.queryset = category.objects.filter()

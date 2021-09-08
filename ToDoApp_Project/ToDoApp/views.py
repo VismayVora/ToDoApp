@@ -13,13 +13,30 @@ class SignUpView(CreateView):
     success_url = reverse_lazy('ToDoApp:categoryindex')
     template_name = 'signup.html'
 
-@login_required(login_url = 'home')
+"""class CategoryOwner(CreateView):
+    model = Task_Category
+    exclude = ['user']
+
+    def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
+
+class CategoryOwner(CreateView):
+    
+    def form_valid(self, form):
+        Task_Category = form.save(commit=False)
+        Task_Category.user = ToDoApp.objects.get(user=self.request.user)  # use your own profile here
+        Task_Category.save()
+        return HttpResponseRedirect(self.get_success_url())"""
+
+
+#@login_required(login_url = 'home')
 def categoryindex(request):
     #task_category_list = Task_Category.objects.all()
     task_category_list = Task_Category.objects.filter(user = request.user)
     return render(request, 'ToDoApp/task_category_list.html', {'task_category_list': task_category_list})
 
-@login_required(login_url = 'home')
+#@login_required(login_url = 'home')
 def taskindex(request):
     #task_list = Task.objects.all()
     task_list = Task.objects.filter(user = request.user)
@@ -30,7 +47,7 @@ def taskindex(request):
         #context['count'] = context['tasks'].filter(complete=False).count()
         #return context
 
-@login_required(login_url = 'home')
+#@login_required(login_url = 'home')
 def create_category(request):
     upload = Task_CategoryForm()
     if request.method == 'POST':
@@ -43,7 +60,7 @@ def create_category(request):
     else:
         return render(request, 'ToDoApp/category_upload_form.html', {'category_upload_form':upload})
 
-@login_required(login_url = 'home')
+#@login_required(login_url = 'home')
 def create_task(request):
     upload = TaskForm()
     if request.method == 'POST':
@@ -56,7 +73,7 @@ def create_task(request):
     else:
         return render(request, 'ToDoApp/upload_form.html', {'upload_form':upload})
 
-@login_required(login_url = 'home')
+#@login_required(login_url = 'home')
 def update_category(request, task_category_id):
     task_category_id = int(task_category_id)
     try:
@@ -69,7 +86,7 @@ def update_category(request, task_category_id):
        return redirect('ToDoApp:categoryindex')
     return render(request, 'ToDoApp/category_upload_form.html', {'category_upload_form':task_category_form})
 
-@login_required(login_url = 'home')
+#@login_required(login_url = 'home')
 def update_task(request, task_id):
     task_id = int(task_id)
     try:
@@ -82,7 +99,7 @@ def update_task(request, task_id):
        return redirect('ToDoApp:taskindex')
     return render(request, 'ToDoApp/upload_form.html', {'upload_form':task_form})
 
-@login_required(login_url = 'home')
+#@login_required(login_url = 'home')
 def delete_category(request, task_category_id):
     task_category_id = int(task_category_id)
     try:
@@ -92,7 +109,7 @@ def delete_category(request, task_category_id):
     task_sel.delete()
     return redirect('ToDoApp:categoryindex')
 
-@login_required(login_url = 'home')
+#@login_required(login_url = 'home')
 def delete_task(request, task_id):
     task_id = int(task_id)
     try:
