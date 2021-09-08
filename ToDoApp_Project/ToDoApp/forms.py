@@ -33,4 +33,5 @@ class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
         fields = '__all__'
-        #exclude = ['user']
+        exclude = ['user']
+        #TaskForm.category.queryset = category.objects.filter()

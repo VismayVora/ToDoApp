@@ -6,9 +6,12 @@ class AppUser(AbstractUser):
 	birth_date = models.DateField(null=True,blank=True)
 	profile_pic = models.ImageField(upload_to='images/')
 
+	def full_name(self):
+		return '%s %s' % (self.first_name, self.last_name)
+
 
 class Task_Category(models.Model):
-	user = models.ForeignKey(AppUser,on_delete = models.CASCADE, null =True, blank = True)
+	user = models.ForeignKey(AppUser,on_delete = models.CASCADE,default = AppUser)
 	title = models.CharField(max_length = 50)
 	description = models.TextField(blank = True)
 	
@@ -20,7 +23,7 @@ class Task_Category(models.Model):
 		verbose_name_plural = ("Categories")
 
 class Task(models.Model):
-	user = models.ForeignKey(AppUser, on_delete = models.CASCADE,null=True,blank=True)
+	user = models.ForeignKey(AppUser, on_delete = models.CASCADE,default = AppUser)
 	category = models.ForeignKey(Task_Category,null=True,on_delete = models.SET_NULL)
 	title = models.CharField(max_length = 50)
 	description = models.TextField(blank = True)
@@ -33,3 +36,4 @@ class Task(models.Model):
 
 	class Meta:
 		ordering = ['status']
+
