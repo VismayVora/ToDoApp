@@ -11,7 +11,7 @@ class AppUser(AbstractUser):
 
 
 class Task_Category(models.Model):
-	user = models.ForeignKey(AppUser,on_delete = models.CASCADE,default = AppUser)
+	user = models.ForeignKey(AppUser,on_delete = models.CASCADE)
 	title = models.CharField(max_length = 50)
 	description = models.TextField(blank = True)
 	
@@ -23,7 +23,7 @@ class Task_Category(models.Model):
 		verbose_name_plural = ("Categories")
 
 class Task(models.Model):
-	user = models.ForeignKey(AppUser, on_delete = models.CASCADE,default = AppUser)
+	user = models.ForeignKey(AppUser, on_delete = models.CASCADE)
 	category = models.ForeignKey(Task_Category,null=True,on_delete = models.SET_NULL)
 	title = models.CharField(max_length = 50)
 	description = models.TextField(blank = True)
