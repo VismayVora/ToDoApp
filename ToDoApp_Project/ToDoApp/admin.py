@@ -22,7 +22,7 @@ class Task_CategoryAdmin(admin.ModelAdmin):
     #fieldsets = (
     #        (None, {'fields': ('user','title','description')}),
     #)
-    search_fields = ['user','title','description']
+    search_fields = ['title','description']
 
     """def save_model(self, request, obj, form, change):
         user = request.user 
@@ -40,7 +40,7 @@ class TaskAdmin(admin.ModelAdmin):
     fieldsets = (
             (None, {'fields': ('user','category','title','description','priority_no','status','duedate')}),
     )
-    search_fields = ['user','category','title','description','priority_no','status','duedate']
+    search_fields = ['title','description']
     """def save_model(self, request, obj, form, change):
         obj.user = request.user
         super().save_model(request, obj, form, change)"""
