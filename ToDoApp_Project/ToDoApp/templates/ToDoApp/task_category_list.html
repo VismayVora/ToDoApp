@@ -8,7 +8,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 </head>
 <body style="background-color:#4DB6AC;">
 <nav class="navbar navbar-light" style="background-color:#FF0033;">
-    <!---<a href="#" class="navbar-brand" style="background-color:#FFCC33;color:#000000;border-width:10px;border-color:#FFCC33;border-style:solid;border-spacing:30px;border-radius: 5px;">Task App</a>--->
+    <a href="#" class="navbar-brand" style="background-color:#FFCC33;color:#000000;border-width:10px;border-color:#FFCC33;border-style:solid;border-spacing:30px;border-radius: 5px;">Task App</a>
     <a class="navbar-link btn-lg" href="{% url 'ToDoApp:categoryindex' %}" style="background-color:#FFCC33;color:#000000;">Home</a>
 <a href="{% url 'admin:index' %}" class = 'navbar-link btn-lg' style="background-color:#FFCC33;color:#000000;">Admin</a>
     <a href="{% url 'ToDoApp:create-category' %}" class="navbar-link btn-lg" style="background-color:#FFCC33;color:#000000;">Add Categories</a>
@@ -17,7 +17,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 
 {% if user.is_authenticated %}
    {% if request.user.profile_pic %}
-    <center><img src="{{ request.user.profile_pic.url }}" width=150 height=150></center>
+    <p><img src="{{ request.user.profile_pic.url }}" width=200 height=200></p>
     {% endif %}
      <center>Welcome, {{ user.username }}.</center>
 {% endif %}
